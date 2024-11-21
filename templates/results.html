@@ -2,6 +2,30 @@
 
 {% block content %}
 <div class="container">
+
+        <!-- Button to start a new query -->
+        <div class="btn btn-primary" type="submit">
+            <a href="{{ url_for('query_scripture') }}" class="btn btn-primary">
+                {% if language == "English" %}
+                Search Scripture Again
+                {% elif language == "Spanish" %}
+                Buscar las Escrituras de Nuevo
+                {% elif language == "Portuguese" %}
+                Buscar Escrituras Novamente
+                {% elif language == "French" %}
+                Rechercher les Écritures à Nouveau
+                {% elif language == "German" %}
+                Erneut in der Bibel suchen
+                {% elif language == "Chinese" %}
+                再次查找经文
+                {% elif language == "Arabic" %}
+                ابحث في الكتاب المقدس مرة أخرى
+                {% else %}
+                New Query
+                {% endif %}
+            </a>
+        </div>
+
     <h1>Results</h1>
     <p>Language: {{ language }} | Version: {{ full_version_name }}</p>
     <p>Your Query: "{{ query }}"</p>
@@ -10,9 +34,10 @@
     {% if summary %}
     <div class="summary">
         <h2>Dynamic Summary</h2>
-        <p>{{ summary }}</p>
+        <p>{{ summary|safe }}</p>
     </div>
     {% endif %}
+
 
     <!-- Results Section -->
     {% if results %}

@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, session, redirect, url_for, jsonify
+import markdown
 import sqlite3
 from dotenv import load_dotenv
 import os
@@ -53,22 +54,22 @@ VERSION_NAMES = {
 
 def generate_dynamic_summary(query, results, language):
     """Generate a dynamic summary of Bible verses using Gemini."""
-    # Join verses into a single text block
     verses = " ".join([f"{row['book']} {row['chapter']}:{row['verse']} - {row['text']}" for row in results])
 
-    # Define the prompt for Gemini
     prompt = (
         f"Summarize the occurrences of the word '{query}' in the following Bible verses: "
         f"{verses}. Provide a concise, insightful summary in {language}."
     )
 
-    # Use Gemini API to generate the summary
     try:
         response = model.generate_content(
             contents=prompt,
-            generation_config=genai.GenerationConfig(max_output_tokens=300)  # Adjust as needed
+            generation_config=genai.GenerationConfig(max_output_tokens=1024)
         )
-        return response.text  # Access the generated text
+        # Convert Markdown-style text to HTML
+        html_summary = markdown.markdown(response.text)
+        return html_summary
+    
     except Exception as e:
         print(f"Error generating dynamic summary: {e}")
         return "Could not generate a summary. Please try again later."
@@ -81,38 +82,36 @@ def get_db_connection():
 
 def get_scripture(query, version="en_kjv"):
     """Search for Bible verses matching the query and version."""
-    conn = get_db_connection()
-    cursor = conn.cursor()
+    with get_db_connection() as conn:
+        cursor = conn.cursor()
 
-    # Dynamically filter results based on the query and version
-    cursor.execute(
-        """
-        SELECT book, chapter, verse, text
-        FROM bible
-        WHERE text LIKE ? AND version = ?
-        """,
-        (f"%{query}%", version)
-    )
-    results = cursor.fetchall()
+        # Fetch matching verses
+        cursor.execute(
+            """
+            SELECT book, chapter, verse, text
+            FROM bible
+            WHERE text LIKE ? AND version = ?
+            """,
+            (f"%{query}%", version)
+        )
+        results = cursor.fetchall()
 
-    # Count occurrences of the query for the selected version
-    cursor.execute(
-        """
-        SELECT COUNT(*)
-        FROM bible
-        WHERE text LIKE ? AND version = ?
-        """,
-        (f"%{query}%", version)
-    )
-    occurrence_count = cursor.fetchone()[0]
+        # Count occurrences
+        cursor.execute(
+            """
+            SELECT COUNT(*)
+            FROM bible
+            WHERE text LIKE ? AND version = ?
+            """,
+            (f"%{query}%", version)
+        )
+        occurrence_count = cursor.fetchone()[0]
 
-    conn.close()
     return results, occurrence_count
 
+
 def ask_gemini(query, language="English"):
-    """Ask Gemini for a Bible-related response."""
     try:
-        # Define the prompt for Gemini
         prompt = (
             f"You are a helpful assistant specializing in the Bible. "
             f"Your primary role is to answer questions about the Bible with scriptural references. "
@@ -120,15 +119,16 @@ def ask_gemini(query, language="English"):
             f"Be clear and concise. Here is the question: {query}"
         )
 
-        # Send the query to Gemini
         response = model.generate_content(
             contents=prompt,
-            generation_config=genai.GenerationConfig(max_output_tokens=300)  # Adjust as needed
+            generation_config=genai.GenerationConfig(max_output_tokens=1024)  # Increased limit
         )
-        return response.text  # Access the generated text
+        print(f"Generated response: {response.text}")  # Debugging
+        return response.text
     except Exception as e:
         print(f"Error with Gemini API: {e}")
         return "Error retrieving response. Please try again later."
+
 
 @app.route("/about")
 def about():
@@ -148,11 +148,20 @@ def select_language():
 @app.route("/query", methods=["GET", "POST"])
 def query_scripture():
     """Allow users to input a query and select their preferred Bible version."""
+    # Clear session data on GET request
+    if request.method == "GET":
+        session.pop("query", None)
+        session.pop("version", None)
+
     language = session.get("language", "English")
 
     if request.method == "POST":
         query = request.form.get("query")
         version = request.form.get("version", "en_kjv")
+
+        # Store query in session for potential reuse
+        session["query"] = query
+        session["version"] = version
 
         # Fetch scripture results and count occurrences
         scripture_results, occurrence_count = get_scripture(query, version)
@@ -178,10 +187,9 @@ def query_scripture():
             gpt_response=gpt_response,
             language=language,
             version=version,
-            full_version_name=full_version_name  # Pass the full version name to the template
+            full_version_name=full_version_name
         )
 
-    # If GET request, provide available Bible versions for selection
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute("SELECT DISTINCT version FROM bible")
