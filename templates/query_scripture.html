@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Search Scripture</h1>
+    <form method="post">
+        <label for="query">Enter a keyword or verse:</label>
+        <textarea id="query" name="query" placeholder="Type a verse or keyword..." required></textarea>
+
+        <label for="version">Choose Bible Version:</label>
+        <select id="version" name="version" required>
+            <option value="ar_svd">Arabic - The Arabic Bible</option>
+            <option value="zh_cuv">Chinese - Chinese Union Version</option>
+            <option value="zh_ncv">Chinese - New Chinese Version</option>
+            <option value="de_schlachter">German - Schlachter</option>
+            <option value="el_greek">Greek - Modern Greek</option>
+            <option value="en_bbe">English - Basic English</option>
+            <option value="en_kjv">English - King James Version</option>
+            <option value="eo_esperanto">Esperanto - Esperanto</option>
+            <option value="es_rvr">Spanish - Reina Valera</option>
+            <option value="fi_finnish">Finnish - Finnish Bible</option>
+            <option value="fi_pr">Finnish - Pyhä Raamattu</option>
+            <option value="fr_apee">French - Le Bible de I'Épée</option>
+            <option value="ko_ko">Korean - Korean Version</option>
+            <option value="pt_aa">Portuguese - Almeida Revisada Imprensa Bíblica</option>
+            <option value="pt_acf">Portuguese - Almeida Corrigida e Revisada Fiel</option>
+            <option value="pt_nvi">Portuguese - Nova Versão Internacional</option>
+            <option value="ro_cornilescu">Romanian - Versiunea Dumitru Cornilescu</option>
+            <option value="ru_synodal">Russian - Синодальный перевод</option>
+            <option value="vi_vietnamese">Vietnamese - Tiếng Việt</option>
+        </select>
+
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+</div>
+{% endblock %}

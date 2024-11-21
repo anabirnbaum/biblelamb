@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Select Your Preferred Language</h1>
+    <form method="post">
+        <label for="language">Language:</label>
+        <select id="language" name="language" required>
+            <option value="English">English</option>
+            <option value="Spanish">Español</option>
+            <option value="Portuguese">Português</option>
+            <option value="French">Français</option>
+            <option value="German">Deutsch</option>
+            <option value="Chinese">中文</option>
+            <option value="Arabic">العربية</option>
+        </select>
+        <button type="submit">Continue</button>
+    </form>
+</div>
+{% endblock %}

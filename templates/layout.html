@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='lambfavicon.ico') }}">
+
+    <header>
+        <nav>
+            <img src="{{ url_for('static', filename='biblelamblogo.png') }}" alt="Bible Lamb Logo" class="logo">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+        </nav>
+    </header>
+
+    <title>{% block title %}Bible Lamb{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+    <footer>
+        <p>&copy; 2024 Bible Lamb</p>
+    </footer>
+</body>
+</html>

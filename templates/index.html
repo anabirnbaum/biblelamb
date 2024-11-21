@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Bible Search</h1>
+    <form method="post">
+        <div class="form-group">
+            <label for="query">Search Scripture</label>
+            <input type="text" id="query" name="query" placeholder="Enter a keyword or verse" required>
+        </div>
+        <div class="form-group">
+            <label for="version">Select Version</label>
+            <select id="version" name="version">
+                <option value="en_kjv">King James Version (KJV)</option>
+                <option value="es_rvr">Reina Valera (Spanish)</option>
+                <option value="pt_acf">Almeida Corrigida e Revisada Fiel (Portuguese)</option>
+                <option value="fr_apee">French Bible</option>
+                <option value="zh_cuv">Chinese Union Version</option>
+                <!-- Add more options as needed -->
+            </select>
+        </div>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if query %}
+    <h2>Results for "{{ query }}" (Version: {{ version }})</h2>
+    {% if results %}
+    <ul>
+        {% for row in results %}
+        <li><strong>{{ row['book'] }} {{ row['chapter'] }}:{{ row['verse'] }}</strong> - {{ row['text'] }}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No results found. Try another query.</p>
+    {% endif %}
+    {% endif %}
+</div>
+{% endblock %}
