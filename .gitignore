@@ -179,3 +179,4 @@ secret.env
 # Exclude any backups
 *backup*
 
+secret.env
