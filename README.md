@@ -1,32 +1,33 @@
-<<<<<<< HEAD
-=======
 
->>>>>>> 9c828f2dc30bb60bacba033c460ae3403733925f
 Bible Lamb Flask App
 Overview
-Bible Lamb is a Flask-based web application that integrates with the Google Gemini API to provide generative AI-powered features. This app is designed for simplicity and scalability, offering a foundation for future enhancements.
+Bible Lamb is a Flask-based web application that integrates with the Google Gemini API to provide generative AI-powered features. This app is designed for simplicity and scalability, offering a solid foundation for future enhancements.
 
 Features
-Flask framework for backend development.
-Google Generative AI integration via the Gemini API.
-Secure session management with environment variables.
-SQLite database for lightweight storage (optional).
+Flask Framework: Lightweight and scalable backend development.
+Google Generative AI Integration: Powered by the Gemini API.
+Secure Session Management: Environment variables for enhanced security.
+SQLite Database: Optional lightweight storage.
+
 Setup Instructions
+
 
 1. Clone the Repository
 bash
 Copy code
-git clone https://github.com/your-username/bible-lamb.git
-cd bible-lamb
+git clone https://github.com/anabirnbaum/biblelamb.git
+cd biblelamb
 
 2. Install Dependencies
-Ensure Python is installed (3.7 or higher). Create a virtual environment and install dependencies:
+Ensure Python (3.7 or higher) is installed. Then create a virtual environment and install the dependencies:
 
 bash
 Copy code
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
+
+
 3. Set Up Environment Variables
 Create a .env file for local development:
 
@@ -46,24 +47,23 @@ Visit the app at http://127.0.0.1:5000/.
 
 Deployment
 To Deploy on PythonAnywhere:
+
 Upload the project files (except .env) to PythonAnywhere.
 Set environment variables (api_key and SECRET_KEY) in the PythonAnywhere web interface.
-Configure the WSGI file as described in the setup guide.
+Configure the WSGI file as described in their setup guide.
 Reload the web app.
+
+
 File Structure
-php
+plaintext
 Copy code
 bible-lamb/
 ├── app.py             # Main Flask application
 ├── requirements.txt   # Python dependencies
-├── secret.env         # Environment variables (not included in deployment)
+├── .env               # Environment variables (not included in deployment)
 ├── templates/         # HTML files for rendering views
 ├── static/            # CSS, JavaScript, and images
 ├── README.md          # Project documentation
-<<<<<<< HEAD
-=======
-
->>>>>>> 9c828f2dc30bb60bacba033c460ae3403733925f
 Environment Variables
 The app requires the following environment variables:
 
@@ -75,41 +75,35 @@ Key dependencies listed in requirements.txt:
 Flask
 python-dotenv
 google-generativeai
-sqlite3 (built-in with Python)
-<<<<<<< HEAD
+SQLite (built-in with Python)
 Contributing
 Contributions are welcome! To contribute:
-=======
-
-Contributing
-Contributions are welcome! 
-
-To contribute:
->>>>>>> 9c828f2dc30bb60bacba033c460ae3403733925f
 
 Fork the repository.
-Create a feature branch: git checkout -b feature-name.
-Commit your changes: git commit -m 'Add feature'.
-Push to the branch: git push origin feature-name.
+Create a feature branch:
+bash
+Copy code
+git checkout -b feature-name
+Commit your changes:
+bash
+Copy code
+git commit -m "Add feature"
+Push to the branch:
+bash
+Copy code
+git push origin feature-name
 Open a pull request.
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 9c828f2dc30bb60bacba033c460ae3403733925f
 License
 This project is licensed under the MIT License.
 
 Contact
-If you have any questions or need help, contact:
+For questions or support:
 
 Name: Ana Birnbaum
 Email: anabirnbaumlinguistics@gmail.com
 GitHub: anabirnbaum
-<<<<<<< HEAD
-=======
 
 # biblelamb
  Bible Lamb is a Flask-based web application that integrates with the Google Gemini API to provide generative AI-powered features. This app is designed for simplicity and scalability, offering a foundation for future enhancements.
 
->>>>>>> 9c828f2dc30bb60bacba033c460ae3403733925f
+
