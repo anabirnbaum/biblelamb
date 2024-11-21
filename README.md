@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 Bible Lamb Flask App
 Overview
 Bible Lamb is a Flask-based web application that integrates with the Google Gemini API to provide generative AI-powered features. This app is designed for simplicity and scalability, offering a foundation for future enhancements.
@@ -92,7 +92,7 @@ If you have any questions or need help, contact:
 Name: Ana Birnbaum
 Email: anabirnbaumlinguistics@gmail.com
 GitHub: anabirnbaum
-=======
+
 # biblelamb
  Bible Lamb is a Flask-based web application that integrates with the Google Gemini API to provide generative AI-powered features. This app is designed for simplicity and scalability, offering a foundation for future enhancements.
->>>>>>> 98e211436a9131fc68c6cbbbb35f558b6c7fb809
+
