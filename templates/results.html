@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Results</h1>
+    <p>Language: {{ language }} | Version: {{ full_version_name }}</p>
+    <p>Your Query: "{{ query }}"</p>
+
+    <!-- Dynamic Summary Section -->
+    {% if summary %}
+    <div class="summary">
+        <h2>Dynamic Summary</h2>
+        <p>{{ summary }}</p>
+    </div>
+    {% endif %}
+
+    <!-- Results Section -->
+    {% if results %}
+    <h2>Matching Verses</h2>
+    <ul>
+        {% for row in results %}
+        <li><strong>{{ row['book'] }} {{ row['chapter'] }}:{{ row['verse'] }}</strong> - {{ row['text'] }}</li>
+        {% endfor %}
+    </ul>
+    {% elif gpt_response %}
+    <h3>AI Assistance</h3>
+    <p>{{ gpt_response }}</p>
+    {% else %}
+    <p>No results found. Try another query.</p>
+    {% endif %}
+</div>
+{% endblock %}
