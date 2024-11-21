@@ -57,6 +57,7 @@ bible-lamb/
 ├── templates/         # HTML files for rendering views
 ├── static/            # CSS, JavaScript, and images
 ├── README.md          # Project documentation
+
 Environment Variables
 The app requires the following environment variables:
 
@@ -69,14 +70,19 @@ Flask
 python-dotenv
 google-generativeai
 sqlite3 (built-in with Python)
+
 Contributing
-Contributions are welcome! To contribute:
+Contributions are welcome! 
+
+To contribute:
 
 Fork the repository.
 Create a feature branch: git checkout -b feature-name.
 Commit your changes: git commit -m 'Add feature'.
 Push to the branch: git push origin feature-name.
 Open a pull request.
+
+
 License
 This project is licensed under the MIT License.
 
