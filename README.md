@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9c828f2dc30bb60bacba033c460ae3403733925f
 Bible Lamb Flask App
 Overview
 Bible Lamb is a Flask-based web application that integrates with the Google Gemini API to provide generative AI-powered features. This app is designed for simplicity and scalability, offering a foundation for future enhancements.
@@ -56,6 +60,10 @@ bible-lamb/
 ├── templates/         # HTML files for rendering views
 ├── static/            # CSS, JavaScript, and images
 ├── README.md          # Project documentation
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9c828f2dc30bb60bacba033c460ae3403733925f
 Environment Variables
 The app requires the following environment variables:
 
@@ -68,14 +76,27 @@ Flask
 python-dotenv
 google-generativeai
 sqlite3 (built-in with Python)
+<<<<<<< HEAD
 Contributing
 Contributions are welcome! To contribute:
+=======
+
+Contributing
+Contributions are welcome! 
+
+To contribute:
+>>>>>>> 9c828f2dc30bb60bacba033c460ae3403733925f
 
 Fork the repository.
 Create a feature branch: git checkout -b feature-name.
 Commit your changes: git commit -m 'Add feature'.
 Push to the branch: git push origin feature-name.
 Open a pull request.
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 9c828f2dc30bb60bacba033c460ae3403733925f
 License
 This project is licensed under the MIT License.
 
@@ -85,3 +106,10 @@ If you have any questions or need help, contact:
 Name: Ana Birnbaum
 Email: anabirnbaumlinguistics@gmail.com
 GitHub: anabirnbaum
+<<<<<<< HEAD
+=======
+
+# biblelamb
+ Bible Lamb is a Flask-based web application that integrates with the Google Gemini API to provide generative AI-powered features. This app is designed for simplicity and scalability, offering a foundation for future enhancements.
+
+>>>>>>> 9c828f2dc30bb60bacba033c460ae3403733925f

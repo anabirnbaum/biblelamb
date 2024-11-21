@@ -66,7 +66,10 @@ jiter==0.7.1
 jsbeautifier==1.15.1
 kiwisolver==1.4.7
 lib50==3.0.11
+<<<<<<< HEAD
 Markdown==3.7
+=======
+>>>>>>> 9c828f2dc30bb60bacba033c460ae3403733925f
 MarkupSafe==3.0.2
 matplotlib==3.9.2
 more-itertools==10.5.0

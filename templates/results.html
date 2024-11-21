@@ -2,6 +2,7 @@
 
 {% block content %}
 <div class="container">
+<<<<<<< HEAD
 
         <!-- Button to start a new query -->
         <div class="btn btn-primary" type="submit">
@@ -26,6 +27,8 @@
             </a>
         </div>
 
+=======
+>>>>>>> 9c828f2dc30bb60bacba033c460ae3403733925f
     <h1>Results</h1>
     <p>Language: {{ language }} | Version: {{ full_version_name }}</p>
     <p>Your Query: "{{ query }}"</p>
@@ -34,11 +37,18 @@
     {% if summary %}
     <div class="summary">
         <h2>Dynamic Summary</h2>
+<<<<<<< HEAD
         <p>{{ summary|safe }}</p>
     </div>
     {% endif %}
 
 
+=======
+        <p>{{ summary }}</p>
+    </div>
+    {% endif %}
+
+>>>>>>> 9c828f2dc30bb60bacba033c460ae3403733925f
     <!-- Results Section -->
     {% if results %}
     <h2>Matching Verses</h2>
