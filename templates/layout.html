@@ -3,24 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Bible Lamb{% endblock %}</title>
 
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='lambfavicon.ico') }}">
 
-    <header>
-        <nav>
-            <img src="{{ url_for('static', filename='biblelamblogo.png') }}" alt="Bible Lamb Logo" class="logo">
-            <a href="/">Home</a>
-            <a href="/about">About</a>
-        </nav>
-    </header>
-
-    <title>{% block title %}Bible Lamb{% endblock %}</title>
+    <!-- CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <header>
+        <nav>
+            <img src="{{ url_for('static', filename='biblelamblogo.png') }}" alt="Bible Lamb Logo" class="logo">
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/about">About</a>
+            </div>
+        </nav>
+    </header>
+    
     <div class="content">
         {% block content %}{% endblock %}
     </div>
+
     <footer>
         <p>&copy; 2024 Bible Lamb</p>
     </footer>
