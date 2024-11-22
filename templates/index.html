@@ -6,17 +6,11 @@
     <form method="post">
         <div class="form-group">
             <label for="query">Search Scripture</label>
-            <input 
-                type="text" 
-                id="query" 
-                name="query" 
-                placeholder="Enter a keyword or verse" 
-                required
-                aria-label="Search Scripture">
+            <input type="text" id="query" name="query" placeholder="Enter a keyword or verse" required>
         </div>
         <div class="form-group">
             <label for="version">Select Version</label>
-            <select id="version" name="version" aria-label="Select Bible Version">
+            <select id="version" name="version">
                 <option value="en_kjv">King James Version (KJV)</option>
                 <option value="es_rvr">Reina Valera (Spanish)</option>
                 <option value="pt_acf">Almeida Corrigida e Revisada Fiel (Portuguese)</option>
@@ -33,9 +27,7 @@
     {% if results %}
     <ul>
         {% for row in results %}
-        <li>
-            <strong>{{ row['book'] }} {{ row['chapter'] }}:{{ row['verse'] }}</strong> - {{ row['text'] }}
-        </li>
+        <li><strong>{{ row['book'] }} {{ row['chapter'] }}:{{ row['verse'] }}</strong> - {{ row['text'] }}</li>
         {% endfor %}
     </ul>
     {% else %}
